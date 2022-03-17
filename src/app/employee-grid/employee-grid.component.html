@@ -2,17 +2,21 @@
   mat-raised-button
   color="primary"
   style="position: absolute; right: 150px; top: 20px"
+  (click)="newEmployeePopup()"
 >
   <span class="material-icons">add</span>
   New Employee
 </button>
 <br />
 
-<h1>Employees</h1>
-<h3 *ngIf="!employees.length">No employees</h3>
+<div style="position: absolute; left: 100px">
+  <h1>Employees</h1>
+  <h3 *ngIf="!employees.length">No employees</h3>
+</div>
+
 <div
   *ngIf="!employees.length"
-  style="position: absolute; left: 30%; text-align: center"
+  style="position: absolute; left: 30%; top: 20%; text-align: center"
 >
   <img src="../../assets/images/no-data.jpg" />
   <br />
