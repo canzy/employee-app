@@ -30,7 +30,9 @@ export class EmployeeGridComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log("The dialog was closed", result)
-      this.employeeData = result
+      // this.employeeData = result
+      this.employees.push(result)
+      console.log("this.employees", this.employees)
     })
   }
 

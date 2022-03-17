@@ -9,9 +9,15 @@
 </button>
 <br />
 
-<div style="position: absolute; left: 100px">
+<div class="toolbar" style="margin-left: 100px">
   <h1>Employees</h1>
   <h3 *ngIf="!employees.length">No employees</h3>
+  <h3 *ngIf="employees.length === 1">There is 1 employee</h3>
+  <h3 *ngIf="employees.length > 1">
+    There are {{ employees.length }} employees
+  </h3>
+
+  <!-- <div *ngIf="employees.length">! Search will go here !</div> -->
 </div>
 
 <div
@@ -25,4 +31,21 @@
   <br />
   Create a new employee by clicking the <b>New Employee</b> button to get
   started
+</div>
+
+<div *ngIf="employees.length" style="margin-left: 100px; width: 80%">
+  <div
+    *ngFor="let employee of employees; let index = index"
+    style="
+      font-size: 48px;
+      background-color: rgb(118, 112, 112);
+      border-radius: 8px;
+      margin-bottom: 15px;
+    "
+  >
+    {{ index + 1 }}
+    {{ employee.firstName }}
+    {{ employee.lastName }}
+    {{ employee.contactNo }}
+  </div>
 </div>
