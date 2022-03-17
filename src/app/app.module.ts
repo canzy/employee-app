@@ -13,6 +13,8 @@ import {
   MatDialogModule,
   MatFormFieldModule,
   MatIconModule,
+  MatInputModule,
+  MAT_FORM_FIELD_DEFAULT_OPTIONS,
 } from "@angular/material"
 import { FormsModule } from "@angular/forms"
 
@@ -23,12 +25,18 @@ import { FormsModule } from "@angular/forms"
     AppRoutingModule,
     NoopAnimationsModule,
     MatButtonModule,
+    MatInputModule,
     MatIconModule,
     MatDialogModule,
     FormsModule,
     MatFormFieldModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+      useValue: { appearance: "fill" },
+    },
+  ],
   bootstrap: [AppComponent],
   entryComponents: [EmployeeDialog],
 })

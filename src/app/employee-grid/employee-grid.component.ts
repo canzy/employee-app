@@ -15,13 +15,16 @@ import * as _ from "lodash"
 export class EmployeeGridComponent implements OnInit {
   employees = []
   employeeData
+  
   constructor(public dialog: MatDialog) {}
 
   ngOnInit() {}
 
   newEmployeePopup(): void {
     const dialogRef = this.dialog.open(EmployeeDialog, {
-      width: "250px",
+      width: "30vw",
+      height: "100vh",
+      position: { left: "0px" },
       data: this.initEmployee(),
     })
 
@@ -33,21 +36,21 @@ export class EmployeeGridComponent implements OnInit {
 
   initEmployee(): EmployeeData {
     return {
-      firstName: ",",
-      lastName: ",",
-      contactNo: ",",
-      email: ",",
+      firstName: "",
+      lastName: "",
+      contactNo: "",
+      email: "",
       birthDate: undefined,
       address: {
-        streetAddress: ",",
-        city: ",",
-        postalCode: ",",
-        country: ",",
+        streetAddress: "",
+        city: "",
+        postalCode: "",
+        country: "",
       },
       skills: {
-        skill: ",",
+        skill: "",
         years: undefined,
-        seniority: ",",
+        seniority: "",
       },
     }
   }
