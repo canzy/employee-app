@@ -1,9 +1,9 @@
 <h1 mat-dialog-title>Edit Employee</h1>
 
-<div mat-dialog-content style="color: white">
+<div mat-dialog-content style="color: white !important">
   <h4>Basic Info</h4>
 
-  <mat-form-field appearance="fill">
+  <mat-form-field>
     <mat-label>First name</mat-label>
     <input matInput [(ngModel)]="data.firstName" />
   </mat-form-field>
@@ -15,13 +15,13 @@
 
   <br />
 
-  <mat-form-field>
+  <mat-form-field style="width: 100%">
     <mat-label>Contact Number</mat-label>
     <input matInput [(ngModel)]="data.contactNumber" />
   </mat-form-field>
   <br />
 
-  <mat-form-field>
+  <mat-form-field style="width: 100%">
     <mat-label>Email Address</mat-label>
     <input matInput [(ngModel)]="data.email" />
   </mat-form-field>
@@ -35,21 +35,51 @@
 
   <h4>Address Info</h4>
 
-  <mat-form-field>
+  <mat-form-field style="width: 100%">
     <mat-label>Street Address</mat-label>
     <input matInput [(ngModel)]="data.streetAddress" />
   </mat-form-field>
+  <br />
 
   <mat-form-field>
     <mat-label>City</mat-label>
     <input matInput [(ngModel)]="data.city" />
   </mat-form-field>
 
+  <mat-form-field>
+    <mat-label>Postal Code</mat-label>
+    <input matInput [(ngModel)]="data.postalCode" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Country</mat-label>
+    <input matInput [(ngModel)]="data.country" />
+  </mat-form-field>
+
   <h4>Skills</h4>
+
+  <mat-form-field>
+    <mat-label>Skill</mat-label>
+    <input matInput [(ngModel)]="data.country" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Yrs Exp</mat-label>
+    <input matInput [(ngModel)]="data.country" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Seniority Rating</mat-label>
+    <input matInput [(ngModel)]="data.seniority" />
+  </mat-form-field>
+
+  <br />
+
+  <button mat-flat-button color="accent">Add new skill</button>
 
   <mat-dialog-actions>
     <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
-    <button mat-raised-button color="primary" [mat-dialog-close]="data">
+    <button mat-raised-button color="basic" [mat-dialog-close]="data">
       Save changes to Employee
     </button>
   </mat-dialog-actions>

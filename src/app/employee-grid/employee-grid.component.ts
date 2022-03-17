@@ -15,7 +15,7 @@ import * as _ from "lodash"
 export class EmployeeGridComponent implements OnInit {
   employees = []
   employeeData
-  
+
   constructor(public dialog: MatDialog) {}
 
   ngOnInit() {}
@@ -47,11 +47,13 @@ export class EmployeeGridComponent implements OnInit {
         postalCode: "",
         country: "",
       },
-      skills: {
-        skill: "",
-        years: undefined,
-        seniority: "",
-      },
+      skills: [
+        {
+          skill: "",
+          years: undefined,
+          seniority: "",
+        },
+      ],
     }
   }
 }

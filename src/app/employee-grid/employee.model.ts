@@ -14,5 +14,5 @@ export interface EmployeeData {
     skill: string
     years: number
     seniority: string
-  }
+  }[]
 }
