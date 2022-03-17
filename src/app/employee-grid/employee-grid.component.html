@@ -1,1 +1,15 @@
-<p>employee-grid works!</p>
+<button
+  mat-raised-button
+  color="primary"
+  style="position: absolute; right: 150px; top: 20px"
+>
+  <span class="material-icons">add</span>
+  New Employee
+</button>
+<br />
+
+<h1>Employees</h1>
+<div *ngIf="!employees.length">
+  <h3>No employees</h3>
+  <img src="../../assets/images/no-data.jpg" />
+</div>
