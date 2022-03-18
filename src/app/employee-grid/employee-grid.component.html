@@ -36,15 +36,11 @@
 <div *ngIf="employees.length" style="margin-left: 100px; width: 80%">
   <div
     *ngFor="let employee of employees; let index = index"
-    style="
-      font-size: 48px;
-      background-color: rgb(118, 112, 112);
-      border-radius: 8px;
-      margin-bottom: 15px;
-    "
+   class="employeeRow"
     (click)="editEmployeePopup(employee, index)"
   >
-    {{ index + 1 }}
+    <div class="numberCircle">{{ index + 1 }}</div>
+
     {{ employee.firstName }}
     {{ employee.lastName }}
     {{ employee.contactNo }}
