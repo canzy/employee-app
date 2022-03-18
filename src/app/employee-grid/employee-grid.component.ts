@@ -36,6 +36,22 @@ export class EmployeeGridComponent implements OnInit {
     })
   }
 
+  editEmployeePopup(employeeDetails, index): void {
+    const dialogRef = this.dialog.open(EmployeeDialog, {
+      width: "30vw",
+      height: "100vh",
+      position: { left: "0px" },
+      data: employeeDetails,
+    })
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log("The EDIT dialog was closed", result)
+      // this.employeeData = result
+      this.employees[index] = result
+      console.log("this.employees", this.employees)
+    })
+  }
+
   initEmployee(): EmployeeData {
     return {
       firstName: "",
