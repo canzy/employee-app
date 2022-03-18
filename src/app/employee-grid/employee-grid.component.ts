@@ -57,8 +57,21 @@ export class EmployeeGridComponent implements OnInit {
     })
   }
 
+  createId() {
+    const list = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    var res = ""
+    for (var i = 0; i < 2; i++) {
+      var rnd = Math.floor(Math.random() * list.length)
+      res = res + list.charAt(rnd)
+    }
+    res += Math.floor(1000 + Math.random() * 9000)
+    console.log("res", res)
+    return res
+  }
+
   initEmployee(): EmployeeData {
     return {
+      ID: this.createId(),
       firstName: "",
       lastName: "",
       contactNo: "",
