@@ -72,6 +72,8 @@ export class EmployeeGridComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         this.employees[index] = result
+      } else {
+        this.employees[index] = this.originalData
       }
     })
   }
