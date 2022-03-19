@@ -15,7 +15,7 @@ import { EmployeeService } from "../employee-service/employee.service"
 })
 export class EmployeeGridComponent implements OnInit {
   employees = []
-  employeeData
+  originalData
 
   constructor(
     public dialog: MatDialog,
@@ -25,12 +25,10 @@ export class EmployeeGridComponent implements OnInit {
   ngOnInit() {
     this.employeeService.getAllEmployees().subscribe(
       (result: any[]) => {
-        console.log("API result", result)
         this.employees = result
       },
       (err) => {
         console.error("Error fetching employees")
-        console.log(err) // TODO: Remove
       }
     )
   }
@@ -44,13 +42,16 @@ export class EmployeeGridComponent implements OnInit {
     })
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log("The dialog was closed", result)
-      // this.employeeData = result
       if (result) {
         this.employees.push(result)
-        this.employeeService.createEmployee(result).subscribe((result) => {
-          console.log("result", result)
-        })
+        this.employeeService.createEmployee(result).subscribe(
+          (result) => {
+            console.log("result", result)
+          },
+          (err) => {
+            console.error("Error creating employee")
+          }
+        )
       }
 
       console.log("this.employees", this.employees)
@@ -58,6 +59,9 @@ export class EmployeeGridComponent implements OnInit {
   }
 
   editEmployeePopup(employeeDetails, index): void {
+    // Save details to revert to if needed
+    this.originalData = _.cloneDeep(employeeDetails)
+
     const dialogRef = this.dialog.open(EmployeeDialog, {
       width: "30vw",
       height: "100vh",
@@ -66,20 +70,22 @@ export class EmployeeGridComponent implements OnInit {
     })
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log("The EDIT dialog was closed", result)
-      // this.employeeData = result
       if (result) {
         this.employees[index] = result
       }
-      console.log("this.employees", this.employees)
     })
   }
 
-  deleteEmployee(id, event) {
+  deleteEmployee(deleteId, event) {
     event.stopPropagation()
-    this.employeeService.deleteEmployee(id).subscribe((result) => {
-      console.log("result", result)
-    })
+    this.employeeService.deleteEmployee(deleteId).subscribe(
+      (result) => {
+        this.employees = this.employees.filter(({ ID }) => ID === deleteId)
+      },
+      (err) => {
+        console.error("Error deleting employee")
+      }
+    )
   }
 
   createId() {
