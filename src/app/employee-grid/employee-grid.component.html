@@ -33,23 +33,25 @@
   started
 </div>
 
-<div *ngIf="employees.length" style="margin-left: 100px; width: 80%">
-  <div
+<table *ngIf="employees.length" style="margin-left: 100px; width: 80%" class="employee-table">
+  <tr
     *ngFor="let employee of employees; let index = index"
     class="employeeRow"
     (click)="editEmployeePopup(employee, index)"
-    
   >
-    <div class="numberCircle">{{ index + 1 }}</div>
-
-    {{ employee.firstName }}
-    {{ employee.lastName }}
-    {{ employee.contactNo }}
-    <span
-      class="material-icons"
-      (click)="deleteEmployee(employee.ID, $event)"
-      style="margin-top: 20px"
-      >delete</span
-    >
-  </div>
-</div>
+    <td>
+      <div class="numberCircle">{{ index + 1 }}</div>
+    </td>
+    <td>{{ employee.firstName }}</td>
+    <td>{{ employee.lastName }}</td>
+    <td>{{ employee.contactNo }}</td>
+    <td>
+      <span
+        class="material-icons"
+        (click)="deleteEmployee(employee.ID, $event)"
+        style="margin-top: 20px"
+        >delete</span
+      >
+    </td>
+  </tr>
+</table>
