@@ -33,7 +33,11 @@
   started
 </div>
 
-<table *ngIf="employees.length" style="margin-left: 100px; width: 80%" class="employee-table">
+<table
+  *ngIf="employees.length"
+  style="margin-left: 100px; width: 80%"
+  class="employee-table"
+>
   <tr
     *ngFor="let employee of employees; let index = index"
     class="employeeRow"
@@ -42,9 +46,9 @@
     <td>
       <div class="numberCircle">{{ index + 1 }}</div>
     </td>
-    <td>{{ employee.firstName }}</td>
-    <td>{{ employee.lastName }}</td>
-    <td>{{ employee.contactNo }}</td>
+    <td style="width: 25%">{{ employee.firstName }}</td>
+    <td style="width: 25%">{{ employee.lastName }}</td>
+    <td style="width: 25%">{{ employee.contactNo }}</td>
     <td>
       <span
         class="material-icons"

@@ -26,7 +26,7 @@
 
 .employee-table {
   border-collapse: separate;
-  border-spacing: 0 5em;
+  border-spacing: 0 2em;
 }
 
 tr td:first-child {
