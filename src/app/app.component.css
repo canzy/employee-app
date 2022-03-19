@@ -1,0 +1,4 @@
+/* Move to dialog css */
+::ng-deep .mat-form-field-label {
+  color: white !important;
+}
