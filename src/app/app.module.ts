@@ -15,8 +15,12 @@ import {
   MatIconModule,
   MatInputModule,
   MAT_FORM_FIELD_DEFAULT_OPTIONS,
+  MatDatepickerModule,
+  MatNativeDateModule,
 } from "@angular/material"
 import { FormsModule } from "@angular/forms"
+import { EmployeeService } from "./employee-service/employee.service"
+import { HttpClientModule } from "@angular/common/http"
 
 @NgModule({
   declarations: [AppComponent, EmployeeGridComponent, EmployeeDialog],
@@ -28,14 +32,18 @@ import { FormsModule } from "@angular/forms"
     MatInputModule,
     MatIconModule,
     MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     FormsModule,
     MatFormFieldModule,
+    HttpClientModule,
   ],
   providers: [
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
       useValue: { appearance: "fill" },
     },
+    EmployeeService,
   ],
   bootstrap: [AppComponent],
   entryComponents: [EmployeeDialog],

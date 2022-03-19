@@ -36,13 +36,20 @@
 <div *ngIf="employees.length" style="margin-left: 100px; width: 80%">
   <div
     *ngFor="let employee of employees; let index = index"
-   class="employeeRow"
+    class="employeeRow"
     (click)="editEmployeePopup(employee, index)"
+    
   >
     <div class="numberCircle">{{ index + 1 }}</div>
 
     {{ employee.firstName }}
     {{ employee.lastName }}
     {{ employee.contactNo }}
+    <span
+      class="material-icons"
+      (click)="deleteEmployee(employee.ID, $event)"
+      style="margin-top: 20px"
+      >delete</span
+    >
   </div>
 </div>

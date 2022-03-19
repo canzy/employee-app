@@ -4,8 +4,8 @@
 
 .numberCircle {
   border-radius: 50%;
-  width: 36px;
-  height: 36px;
+  width: 30px;
+  height: 30px;
   padding: 8px;
 
   /* background: #fff; */
@@ -13,7 +13,7 @@
   color: rgb(124, 62, 169);
   text-align: center;
 
-  font: 32px Arial, sans-serif;
+  font: 28px Arial, sans-serif;
   margin: 5px;
 }
 

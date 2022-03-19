@@ -6,6 +6,7 @@ import {
 } from "@angular/material/dialog"
 import { EmployeeData } from "./employee.model"
 import * as _ from "lodash"
+import { EmployeeService } from "../employee-service/employee.service"
 
 @Component({
   selector: "app-employee-grid",
@@ -16,9 +17,23 @@ export class EmployeeGridComponent implements OnInit {
   employees = []
   employeeData
 
-  constructor(public dialog: MatDialog) {}
+  constructor(
+    public dialog: MatDialog,
+    public employeeService: EmployeeService
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.employeeService.getAllEmployees().subscribe(
+      (result: any[]) => {
+        console.log("API result", result)
+        this.employees = result
+      },
+      (err) => {
+        console.error("Error fetching employees")
+        console.log(err) // TODO: Remove
+      }
+    )
+  }
 
   newEmployeePopup(): void {
     const dialogRef = this.dialog.open(EmployeeDialog, {
@@ -33,6 +48,9 @@ export class EmployeeGridComponent implements OnInit {
       // this.employeeData = result
       if (result) {
         this.employees.push(result)
+        this.employeeService.createEmployee(result).subscribe((result) => {
+          console.log("result", result)
+        })
       }
 
       console.log("this.employees", this.employees)
@@ -57,6 +75,13 @@ export class EmployeeGridComponent implements OnInit {
     })
   }
 
+  deleteEmployee(id, event) {
+    event.stopPropagation()
+    this.employeeService.deleteEmployee(id).subscribe((result) => {
+      console.log("result", result)
+    })
+  }
+
   createId() {
     const list = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     var res = ""
@@ -65,7 +90,6 @@ export class EmployeeGridComponent implements OnInit {
       res = res + list.charAt(rnd)
     }
     res += Math.floor(1000 + Math.random() * 9000)
-    console.log("res", res)
     return res
   }
 
