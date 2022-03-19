@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>Edit Employee</h1>
+<h1 mat-dialog-title style="color: white">Edit Employee</h1>
 
 <div mat-dialog-content style="color: white !important">
   <h4>Basic Info</h4>
@@ -58,24 +58,28 @@
 
   <h4>Skills</h4>
 
-  <mat-form-field>
-    <mat-label>Skill</mat-label>
-    <input matInput [(ngModel)]="data.country" required="true" />
-  </mat-form-field>
+  <div *ngFor="let skill of data.skills; let index = index">
+    <mat-form-field>
+      <mat-label>Skill</mat-label>
+      <input matInput [(ngModel)]="skill.skill" required="true" />
+    </mat-form-field>
 
-  <mat-form-field>
-    <mat-label>Yrs Exp</mat-label>
-    <input matInput [(ngModel)]="data.country" required="true" />
-  </mat-form-field>
+    <mat-form-field>
+      <mat-label>Yrs Exp</mat-label>
+      <input matInput [(ngModel)]="skill.years" required="true" />
+    </mat-form-field>
 
-  <mat-form-field>
-    <mat-label>Seniority Rating</mat-label>
-    <input matInput [(ngModel)]="data.seniority" required="true" />
-  </mat-form-field>
+    <mat-form-field>
+      <mat-label>Seniority Rating</mat-label>
+      <input matInput [(ngModel)]="skill.seniority" required="true" />
+    </mat-form-field>
+  </div>
 
   <br />
 
-  <button mat-stroked-button color="primary">Add new skill</button>
+  <button mat-stroked-button color="primary" (click)="addNewSkill(data.skills)">
+    Add new skill
+  </button>
 
   <mat-dialog-actions>
     <button mat-raised-button color="primary" [mat-dialog-close]="originalData">
@@ -83,6 +87,7 @@
     </button>
     <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
     <button mat-raised-button color="primary" [mat-dialog-close]="data">
+      <span class="material-icons">add</span>
       Save changes to Employee
     </button>
   </mat-dialog-actions>

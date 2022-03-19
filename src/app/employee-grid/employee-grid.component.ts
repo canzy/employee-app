@@ -136,7 +136,11 @@ export class EmployeeDialog {
     @Inject(MAT_DIALOG_DATA) public data: EmployeeData
   ) {}
 
-  onNoClick(): void {
-    this.dialogRef.close()
+  addNewSkill(employeeSkills) {
+    employeeSkills.push({
+      skill: "",
+      years: undefined,
+      seniority: "",
+    })
   }
 }
