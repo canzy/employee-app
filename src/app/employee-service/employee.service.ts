@@ -36,4 +36,8 @@ export class EmployeeService {
     localStorage.setItem(id, JSON.stringify(employee))
     return of(employee)
   }
+
+  getEmployee(id) {
+    return of(JSON.parse(localStorage.getItem(id)))
+  }
 }
