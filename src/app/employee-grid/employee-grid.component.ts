@@ -82,7 +82,7 @@ export class EmployeeGridComponent implements OnInit {
     event.stopPropagation()
     this.employeeService.deleteEmployee(deleteId).subscribe(
       (result) => {
-        this.employees = this.employees.filter(({ ID }) => ID === deleteId)
+        this.employees = this.employees.filter(({ ID }) => ID !== deleteId)
       },
       (err) => {
         console.error("Error deleting employee")
