@@ -72,7 +72,15 @@ export class EmployeeGridComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.employees[index] = result
+        this.employeeService.updateEmployee(result.ID, result).subscribe(
+          (result) => {
+            this.employees[index] = result
+            localStorage.removeItem("employeeChange")
+          },
+          (err) => {
+            console.error("Error updating employee")
+          }
+        )
       } else {
         this.employees[index] = this.originalData
       }
