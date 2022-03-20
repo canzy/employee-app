@@ -10,8 +10,6 @@ export class EmployeeService {
   getAllEmployees() {
     let employees = Object.keys(localStorage)
       .map((key) => {
-        console.log("key", key)
-        console.log("localStorage.getItem(key)", localStorage.getItem(key))
         return JSON.parse(localStorage.getItem(key))
       })
       .filter((item) => item)

@@ -39,9 +39,10 @@ tr td:last-child {
   border-bottom-right-radius: 10px;
 }
 
-.searchInput {
+.searchFilterInput {
   background-color: transparent;
   font-size: 28px;
-  width: 400px;
+  
   color: white;
+  display: inline-block; 
 }

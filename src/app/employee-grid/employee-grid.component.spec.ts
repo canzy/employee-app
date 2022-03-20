@@ -24,7 +24,6 @@ describe("EmployeeGridComponent", () => {
 
   it("Default Employee Details Should be Empty", () => {
     let employee = component.initEmployee()
-    console.log("employee.firstName", employee.firstName)
     expect(employee.firstName).toBe("")
     expect(employee.lastName).toBe("")
     expect(employee.contactNo).toBe(undefined)

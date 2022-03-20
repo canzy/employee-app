@@ -21,14 +21,20 @@
   </h3>
 </div>
 
-<div *ngIf="employees.length" style="display: inline-block">
-  <input
-    class="searchInput"
-    [(ngModel)]="searchValue"
-    (input)="applyFilter($event.target.value)"
-    placeholder="Search..."
-  />
-</div>
+<input
+  *ngIf="employees.length"
+  style="margin-right: 25px; width: 400px"
+  class="searchFilterInput"
+  [(ngModel)]="searchValue"
+  (input)="applyFilter($event.target.value)"
+  placeholder="Search..."
+/>
+
+<select class="searchFilterInput" [(ngModel)]="filterValue">
+  <option [ngValue]="undefined" disabled selected>Filter by</option>
+  <option>Birth Date</option>
+  <option>Skills</option>
+</select>
 
 <div
   *ngIf="!employees.length"
@@ -51,7 +57,7 @@
   <tr
     *ngFor="let employee of employees; let index = index"
     class="employeeRow"
-    [ngClass]="
+    [ngStyle]="
       shouldShow(employee, searchValue)
         ? { display: 'block' }
         : { display: 'none' }

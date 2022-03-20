@@ -17,6 +17,7 @@ export class EmployeeGridComponent implements OnInit {
   employees = []
   originalData
   searchValue
+  filterValue
 
   constructor(
     public dialog: MatDialog,
@@ -44,18 +45,15 @@ export class EmployeeGridComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.employees.push(result)
         this.employeeService.createEmployee(result).subscribe(
           (result) => {
-            console.log("result", result)
+            this.employees.push(result)
           },
           (err) => {
             console.error("Error creating employee")
           }
         )
       }
-
-      console.log("this.employees", this.employees)
     })
   }
 
