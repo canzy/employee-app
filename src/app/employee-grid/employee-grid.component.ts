@@ -16,6 +16,7 @@ import { EmployeeService } from "../employee-service/employee.service"
 export class EmployeeGridComponent implements OnInit {
   employees = []
   originalData
+  searchValue
 
   constructor(
     public dialog: MatDialog,
@@ -122,6 +123,27 @@ export class EmployeeGridComponent implements OnInit {
           seniority: "",
         },
       ],
+    }
+  }
+
+  applyFilter() {
+    Array.from(document.querySelectorAll(".employeeRow")).map(
+      (e: HTMLElement) => {
+        e.style.display = new RegExp(this.searchValue, "i").test(e.innerText)
+          ? "block"
+          : "none"
+      }
+    )
+  }
+
+  shouldShow(employee, searchValue) {
+    if (searchValue) {
+      return ["firstName", "lastName", "email"].some((key) => {
+        return new RegExp(searchValue, "i").test(employee[key])
+      })
+    } else {
+      // Show if there is no search criteria
+      return true
     }
   }
 }

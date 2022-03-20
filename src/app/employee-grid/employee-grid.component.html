@@ -9,15 +9,25 @@
 </button>
 <br />
 
-<div class="toolbar" style="margin-left: 100px">
+<div
+  class="toolbar"
+  style="margin-left: 100px; margin-right: 25px; display: inline-block"
+>
   <h1>Employees</h1>
   <h3 *ngIf="!employees.length">No employees</h3>
   <h3 *ngIf="employees.length === 1">There is 1 employee</h3>
   <h3 *ngIf="employees.length > 1">
     There are {{ employees.length }} employees
   </h3>
+</div>
 
-  <!-- <div *ngIf="employees.length">! Search will go here !</div> -->
+<div *ngIf="employees.length" style="display: inline-block">
+  <input
+    class="searchInput"
+    [(ngModel)]="searchValue"
+    (input)="applyFilter($event.target.value)"
+    placeholder="Search..."
+  />
 </div>
 
 <div
@@ -41,6 +51,11 @@
   <tr
     *ngFor="let employee of employees; let index = index"
     class="employeeRow"
+    [ngClass]="
+      shouldShow(employee, searchValue)
+        ? { display: 'block' }
+        : { display: 'none' }
+    "
     (click)="editEmployeePopup(employee, index)"
   >
     <td>
