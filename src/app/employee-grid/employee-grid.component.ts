@@ -49,6 +49,7 @@ export class EmployeeGridComponent implements OnInit {
         this.employeeService.createEmployee(result).subscribe(
           (result) => {
             this.employees.push(result)
+            localStorage.removeItem("employeeChange")
           },
           (err) => {
             console.error("Error creating employee")
@@ -75,6 +76,7 @@ export class EmployeeGridComponent implements OnInit {
       } else {
         this.employees[index] = this.originalData
       }
+      localStorage.removeItem("employeeChange")
     })
   }
 
