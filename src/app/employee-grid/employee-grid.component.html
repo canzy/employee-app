@@ -58,13 +58,13 @@
     "
     (click)="editEmployeePopup(employee, index)"
   >
-    <td>
+    <td style="width: 15%">
       <div class="numberCircle">{{ index + 1 }}</div>
     </td>
     <td style="width: 25%">{{ employee.firstName }}</td>
     <td style="width: 25%">{{ employee.lastName }}</td>
     <td style="width: 25%">{{ employee.contactNo }}</td>
-    <td>
+    <td style="width: 10%">
       <span
         class="material-icons"
         (click)="deleteEmployee(employee.ID, $event)"
