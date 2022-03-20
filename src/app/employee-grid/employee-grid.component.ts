@@ -25,6 +25,7 @@ export class EmployeeGridComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.checkChanges()
     this.employeeService.getAllEmployees().subscribe(
       (result: any[]) => {
         this.employees = result
@@ -144,6 +145,34 @@ export class EmployeeGridComponent implements OnInit {
       return true
     }
   }
+
+  checkChanges() {
+    let storedData = localStorage.getItem("employeeChange")
+    if (storedData) {
+      const dialogRef = this.dialog.open(EmployeeDialog, {
+        width: "30vw",
+        height: "100vh",
+        position: { left: "0px" },
+        data: JSON.parse(storedData),
+      })
+
+      localStorage.removeItem("employeeChange")
+
+      // Might or might not be new
+      // dialogRef.afterClosed().subscribe((result) => {
+      //   if (result) {
+      //     this.employeeService.createEmployee(result).subscribe(
+      //       (result) => {
+      //         this.employees.push(result)
+      //       },
+      //       (err) => {
+      //         console.error("Error creating employee")
+      //       }
+      //     )
+      //   }
+      // })
+    }
+  }
 }
 
 @Component({
@@ -162,5 +191,9 @@ export class EmployeeDialog {
       years: undefined,
       seniority: "",
     })
+  }
+
+  employeeChange(data) {
+    localStorage.setItem("employeeChange", JSON.stringify(data))
   }
 }

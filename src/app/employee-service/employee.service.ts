@@ -10,6 +10,9 @@ export class EmployeeService {
   getAllEmployees() {
     let employees = Object.keys(localStorage)
       .map((key) => {
+        if (key == "employeeChange") {
+          return {}
+        }
         return JSON.parse(localStorage.getItem(key))
       })
       .filter((item) => item)
